@@ -12,7 +12,11 @@
         },
         {
             "url": "https://api-polinema.webview.cloud/api",
-            "description": "Production Server"
+            "description": "Staging Server"
+        },
+        {
+            "url": "http://202.10.56.166/api",
+            "description": "Prod Server"
         }
     ],
     "paths": {

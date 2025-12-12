@@ -15,7 +15,11 @@ namespace App\Http\Controllers;
  * )
  * @OA\Server(
  *     url="https://api-polinema.webview.cloud/api",
- *     description="Production Server"
+ *     description="Staging Server"
+ * )
+ * @OA\Server(
+ *     url="http://202.10.56.166/api",
+ *     description="Prod Server"
  * )
  * 
  * @OA\SecurityScheme(
