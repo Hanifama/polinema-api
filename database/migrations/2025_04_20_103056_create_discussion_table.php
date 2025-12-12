@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('view_cnt')->default(0);
             $table->integer('like_cnt')->default(0);
             $table->integer('comment_cnt')->default(0);
-        
+
             $table->foreign('user_id')->references('user_id')->on('users');
         });
     }

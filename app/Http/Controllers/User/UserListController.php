@@ -331,7 +331,7 @@ class UserListController extends Controller
 
         // Filter by radius (optional)
         if ($radius !== null) {
-            $query->whereRaw("$distanceFormula <= ?", [$userLat, $userLng, $userLat, $radius]);
+            $query->whereRaw("($distanceFormula) <= {$radius}", [$userLat, $userLng, $userLat]);
         }
 
         // Filter by major

@@ -8,6 +8,7 @@ use App\Models\UserExperience;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -362,13 +363,13 @@ class ProfileController extends Controller
     /**
      * @OA\Delete(
      *     path="/profile/delete-account",
-     *     summary="Menghapus akun pengguna (soft delete)",
+     *     summary="Menghapus akun pengguna (hilang permanen)",
      *     description="Soft delete akun pengguna yang sedang login.",
      *     tags={"Profile Pengguna"},
      *     security={{"bearerAuth": {}}},
      *     @OA\Response(
      *         response=200,
-     *         description="Akun berhasil dihapus (soft delete)."
+     *         description="Akun beserta seluruh data berhasil dihapus permanen."
      *     )
      * )
      */
@@ -376,12 +377,12 @@ class ProfileController extends Controller
     {
         $user = JWTAuth::parseToken()->authenticate();
 
-        // Soft delete
-        $user->delete();
+        DB::transaction(function () use ($user) {
+            $user->forceDelete();
+        });
 
-        // Invalidate token setelah delete
         JWTAuth::invalidate(JWTAuth::getToken());
 
-        return ApiResponse::success('Akun berhasil dihapus.');
+        return ApiResponse::success('Akun beserta seluruh data berhasil dihapus permanen.');
     }
 }
