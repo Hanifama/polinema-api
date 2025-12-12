@@ -11,6 +11,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Helpers\ApiResponse;
 use App\Models\PostComment;
 use App\Models\PostLike;
+use App\Models\UserBlocked;
 
 // use App\Models\PostComment;
 // use App\Models\PostLike;
@@ -418,11 +419,21 @@ class PostController extends Controller
             $attachmentUrl = $request->link;
         }
 
+        // Cek apakah author diblokir oleh pemilik wall
+        $isBlocked = UserBlocked::where('blocker_user_id', $request->wall_owner_id)
+            ->where('blocked_user_id', $user->user_id)
+            ->where('is_active', true)
+            ->exists();
+
+        if ($isBlocked) {
+            return ApiResponse::error('Anda tidak dapat membuat post karena telah diblokir oleh pemilik wall.');
+        }
+
         // Logic cek apakah boleh bikin post baru
         if ($user->user_id !== $request->wall_owner_id) {
             // Bukan pemilik wall, cek ada post belum dibalas gak
             $pendingPost = Post::where('wall_owner_id', $request->wall_owner_id)
-                ->where('author_id', $user->user_id)  // cek hanya post dari author yang sama (Andi)
+                ->where('author_id', $user->user_id)  // cek hanya post dari author yang sama
                 ->where('replied', false)
                 ->first();
 

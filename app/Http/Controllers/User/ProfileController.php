@@ -331,4 +331,57 @@ class ProfileController extends Controller
 
         return ApiResponse::success('Pengalaman kerja berhasil dihapus.');
     }
+
+    // /**
+    //  * @OA\Put(
+    //  *     path="/profile/deactivate",
+    //  *     summary="Menonaktifkan akun pengguna",
+    //  *     description="Menandai status pengguna sebagai inactive dan memutus sesi token.",
+    //  *     tags={"Profile Pengguna"},
+    //  *     security={{"bearerAuth": {}}},
+    //  *     @OA\Response(
+    //  *         response=200,
+    //  *         description="Akun berhasil dinonaktifkan."
+    //  *     )
+    //  * )
+    //  */
+    // public function deactivateAccount()
+    // {
+    //     $user = JWTAuth::parseToken()->authenticate();
+
+    //     $user->update([
+    //         'status' => 'inactive'
+    //     ]);
+
+    //     JWTAuth::invalidate(JWTAuth::getToken());
+
+    //     return ApiResponse::success('Akun berhasil dinonaktifkan sementara.');
+    // }
+
+
+    /**
+     * @OA\Delete(
+     *     path="/profile/delete-account",
+     *     summary="Menghapus akun pengguna (soft delete)",
+     *     description="Soft delete akun pengguna yang sedang login.",
+     *     tags={"Profile Pengguna"},
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Akun berhasil dihapus (soft delete)."
+     *     )
+     * )
+     */
+    public function destroyAccount()
+    {
+        $user = JWTAuth::parseToken()->authenticate();
+
+        // Soft delete
+        $user->delete();
+
+        // Invalidate token setelah delete
+        JWTAuth::invalidate(JWTAuth::getToken());
+
+        return ApiResponse::success('Akun berhasil dihapus.');
+    }
 }

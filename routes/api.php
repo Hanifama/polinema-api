@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Banner\BannerController;
 use App\Http\Controllers\BannerTenant\BannerTenantController;
+use App\Http\Controllers\BlockedUser\UserBlockerController;
 use App\Http\Controllers\Chattings\ChatController;
 use App\Http\Controllers\CheckVersion\AppVersionController;
 use App\Http\Controllers\Event\EventController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\Location\LocationController;
 use App\Http\Controllers\Master\SystemMasterController;
 use App\Http\Controllers\MasterData\Academic\DepartmentController;
 use App\Http\Controllers\MasterData\Academic\ProgramController;
+use App\Http\Controllers\ReportUser\ReportUserController;
 use App\Http\Controllers\Tenant\ShoppingbyVoucherController;
 use App\Http\Controllers\Tenant\TenantCategoryController;
 use App\Http\Controllers\Tenant\TenantController;
@@ -86,6 +88,8 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show']);
     Route::post('/profile', [ProfileController::class, 'update']);
     Route::put('/profile-experience', [ProfileController::class, 'updateExperiences']);
+    // Route::put('/profile/deactivate', [ProfileController::class, 'deactivate']);
+    Route::delete('/profile/delete-account', [ProfileController::class, 'destroyAccount']);
     Route::delete('/profile-experience/{experience_id}', [ProfileController::class, 'deleteExperienceById']);
 
     // Share Location Pengguna
@@ -176,4 +180,20 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/post/comment/{post_id}', [PostController::class, 'getCommentsByPost']);
     Route::post('/post/like/{post_id}', [PostController::class, 'likePost']);
     Route::get('/posts/{post_id}/likes', [PostController::class, 'getLikesByPost']);
+
+    // Report Category
+    Route::get('/report-categories', [ReportUserController::class, 'categoryIndex']);
+    Route::post('/report-categories', [ReportUserController::class, 'categoryStore']);
+    Route::get('/report-categories/{id}', [ReportUserController::class, 'categoryShow']);
+
+    // Report User
+    Route::get('/user-reports', [ReportUserController::class, 'reportIndex']);
+    Route::post('/user-reports', [ReportUserController::class, 'reportStore']);
+    Route::get('/user-reports/{id}', [ReportUserController::class, 'reportShow']);
+
+    // Block User
+    Route::post('/block-user', [UserBlockerController::class, 'blockUser']);
+    Route::post('/unblock-user', [UserBlockerController::class, 'unblockUser']);
+    Route::get('/check-blocked/{userId}', [UserBlockerController::class, 'checkBlocked']);
+    Route::get('/blocked-users', [UserBlockerController::class, 'listBlockedUsers']);
 });

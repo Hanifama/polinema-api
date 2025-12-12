@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use OpenApi\Annotations as OA;
 
@@ -104,6 +105,7 @@ use OpenApi\Annotations as OA;
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
+    use SoftDeletes;
 
     protected $table = 'users';
     protected $primaryKey = 'user_id';

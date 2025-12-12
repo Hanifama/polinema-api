@@ -1358,6 +1358,142 @@
                 ]
             }
         },
+        "/block-user": {
+            "post": {
+                "tags": [
+                    "User Block"
+                ],
+                "summary": "Blokir user",
+                "operationId": "d8cd68912b42057f287c44cb8226e345",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "blocked_user_id"
+                                ],
+                                "properties": {
+                                    "blocked_user_id": {
+                                        "type": "string",
+                                        "example": "user-e27a6eba-e908-4f5f-9a19-a753cebe6e93"
+                                    },
+                                    "reason": {
+                                        "type": "string",
+                                        "example": "Mengirim spam"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User berhasil diblokir"
+                    },
+                    "409": {
+                        "description": "User sudah diblokir sebelumnya"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/unblock-user": {
+            "post": {
+                "tags": [
+                    "User Block"
+                ],
+                "summary": "Unblock user",
+                "operationId": "f84ba255de8aa032e2ac76585c56e800",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "blocked_user_id"
+                                ],
+                                "properties": {
+                                    "blocked_user_id": {
+                                        "type": "string",
+                                        "example": "user-e27a6eba-e908-4f5f-9a19-a753cebe6e93"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User berhasil di-unblock"
+                    },
+                    "404": {
+                        "description": "Data blokir tidak ditemukan"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/check-blocked/{userId}": {
+            "get": {
+                "tags": [
+                    "User Block"
+                ],
+                "summary": "Cek apakah user diblokir",
+                "operationId": "7241949b78144f763d4c8de55b1888ce",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "ID user yang ingin dicek",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "user-e27a6eba-e908-4f5f-9a19-a753cebe6e93"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Status blokir berhasil diambil"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/blocked-users": {
+            "get": {
+                "tags": [
+                    "User Block"
+                ],
+                "summary": "List user yang diblokir",
+                "operationId": "4964306b937911fe531759fad0dada43",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil data user yang diblokir"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/chat/room": {
             "post": {
                 "tags": [
@@ -3293,6 +3429,194 @@
                 ]
             }
         },
+        "/report-categories": {
+            "get": {
+                "tags": [
+                    "Report - Categories"
+                ],
+                "summary": "Ambil semua kategori report",
+                "operationId": "374b82740b13508ff546e43f4db6b425",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil mengambil kategori"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Report - Categories"
+                ],
+                "summary": "Buat kategori report baru",
+                "operationId": "cf50ce843097b89e8441884c8dba9795",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Kategori berhasil dibuat"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/report-categories/{code}": {
+            "get": {
+                "tags": [
+                    "Report - Categories"
+                ],
+                "summary": "Detail kategori report",
+                "operationId": "098c13f74e7de078263b08c58e466eeb",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Kode kategori (ex: SPAM, ABUSIVE_BEHAVIOR)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil"
+                    },
+                    "404": {
+                        "description": "Tidak ditemukan"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-reports": {
+            "get": {
+                "tags": [
+                    "User Report"
+                ],
+                "summary": "Ambil semua report milik user",
+                "operationId": "79e8ff6844689031248abe001590d4a3",
+                "responses": {
+                    "200": {
+                        "description": "Berhasil"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "User Report"
+                ],
+                "summary": "Buat laporan user",
+                "operationId": "f5077f10d3447e155c0d290a0422c589",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "reported_user_id",
+                                    "category_code"
+                                ],
+                                "properties": {
+                                    "reported_user_id": {
+                                        "type": "string",
+                                        "example": "user-e27a6eba-e908-4f5f-9a19-a753cebe6e93"
+                                    },
+                                    "category_code": {
+                                        "type": "string",
+                                        "example": "SPAM"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-reports/{id}": {
+            "get": {
+                "tags": [
+                    "User Report"
+                ],
+                "summary": "Detail report user",
+                "operationId": "b42a31f1173d58188e3ae9d7f9bcbcd6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Berhasil"
+                    },
+                    "404": {
+                        "description": "Tidak ditemukan"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/promo-categories": {
             "get": {
                 "tags": [
@@ -4919,6 +5243,26 @@
                     },
                     "404": {
                         "description": "Pengalaman kerja tidak ditemukan"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/profile/delete-account": {
+            "delete": {
+                "tags": [
+                    "Profile Pengguna"
+                ],
+                "summary": "Menghapus akun pengguna (soft delete)",
+                "description": "Soft delete akun pengguna yang sedang login.",
+                "operationId": "2239e71b9a242eaca9d0ef2ddab2d3f3",
+                "responses": {
+                    "200": {
+                        "description": "Akun berhasil dihapus (soft delete)."
                     }
                 },
                 "security": [
@@ -6688,6 +7032,10 @@
             "description": "Banner-spotlight"
         },
         {
+            "name": "User Block",
+            "description": "User Block"
+        },
+        {
             "name": "Chating",
             "description": "Chating"
         },
@@ -6722,6 +7070,14 @@
         {
             "name": "System Master",
             "description": "System Master"
+        },
+        {
+            "name": "Report - Categories",
+            "description": "Report - Categories"
+        },
+        {
+            "name": "User Report",
+            "description": "User Report"
         },
         {
             "name": "Promo",
