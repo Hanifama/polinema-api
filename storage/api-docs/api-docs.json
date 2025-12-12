@@ -5261,12 +5261,12 @@
                 "tags": [
                     "Profile Pengguna"
                 ],
-                "summary": "Menghapus akun pengguna (soft delete)",
+                "summary": "Menghapus akun pengguna (hilang permanen)",
                 "description": "Soft delete akun pengguna yang sedang login.",
                 "operationId": "2239e71b9a242eaca9d0ef2ddab2d3f3",
                 "responses": {
                     "200": {
-                        "description": "Akun berhasil dihapus (soft delete)."
+                        "description": "Akun beserta seluruh data berhasil dihapus permanen."
                     }
                 },
                 "security": [
