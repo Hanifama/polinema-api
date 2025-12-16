@@ -90,8 +90,7 @@ class UserBlockerController extends Controller
             return ApiResponse::error('Data blokir tidak ditemukan.', 404);
         }
 
-        $data->is_active = false;
-        $data->save();
+        $data->delete();
 
         return ApiResponse::success('User berhasil di-unblock.');
     }
