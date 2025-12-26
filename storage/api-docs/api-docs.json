@@ -3433,6 +3433,79 @@
                 ]
             }
         },
+        "/post/reports": {
+            "post": {
+                "tags": [
+                    "Post Report"
+                ],
+                "summary": "Laporkan konten (Post Commnunity / Post Wall)",
+                "description": "\n     * Endpoint ini digunakan untuk melaporkan konten yang dianggap melanggar aturan\n     * seperti spam, ujaran kebencian, pornografi, atau konten tidak pantas lainnya.\n     *\n     * ### Cara Penggunaan:\n     * - Tentukan jenis konten yang ingin dilaporkan melalui **report_type**\n     * - Isi **salah satu** sesuai jenis kontennya:\n     *   - report_type = `discussion`  → untuk forum komunitas gunakan `reported_discus_id` diisi oleh discus_id yang mau di report\n     *   - report_type = `post_wall`   → untuk post di wall gunakan `reported_post_id` diisi oleh post_id yang mau di report\n     * - Pilih salah satu, dan salah satunya null\n     *\n     * ",
+                "operationId": "7a39c2a845bc6fe758444e8a008a8cfc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "report_type",
+                                    "category_code"
+                                ],
+                                "properties": {
+                                    "report_type": {
+                                        "description": "Jenis konten yang dilaporkan. Pilihan: discussion | post_wall",
+                                        "type": "string",
+                                        "example": "discussion"
+                                    },
+                                    "reported_discus_id": {
+                                        "description": "Wajib diisi jika report_type = discussion",
+                                        "type": "string",
+                                        "example": "discus-8f2c1d9e-7a34-4c3f-9b1a",
+                                        "nullable": true
+                                    },
+                                    "reported_post_id": {
+                                        "description": "Wajib diisi jika report_type = post_wall",
+                                        "type": "string",
+                                        "example": "post-7a34-4c3f-9b1a-22dcb9a",
+                                        "nullable": true
+                                    },
+                                    "category_code": {
+                                        "description": "Kategori Report (contoh: SPAM, SEXUAL_CONTENT, IMPERSONATION)",
+                                        "type": "string",
+                                        "example": "SPAM"
+                                    },
+                                    "description": {
+                                        "description": "Keterangan tambahan dari pelapor (opsional)",
+                                        "type": "string",
+                                        "example": "Konten mengandung spam promosi",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Report berhasil dikirim."
+                    },
+                    "400": {
+                        "description": "Validasi gagal atau user melaporkan konten sendiri"
+                    },
+                    "404": {
+                        "description": "Konten yang dilaporkan tidak ditemukan"
+                    },
+                    "409": {
+                        "description": "User sudah pernah melaporkan konten yang sama"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/report-categories": {
             "get": {
                 "tags": [
@@ -7074,6 +7147,10 @@
         {
             "name": "System Master",
             "description": "System Master"
+        },
+        {
+            "name": "Post Report",
+            "description": "Post Report"
         },
         {
             "name": "Report - Categories",

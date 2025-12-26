@@ -21,6 +21,7 @@ use App\Http\Controllers\Location\LocationController;
 use App\Http\Controllers\Master\SystemMasterController;
 use App\Http\Controllers\MasterData\Academic\DepartmentController;
 use App\Http\Controllers\MasterData\Academic\ProgramController;
+use App\Http\Controllers\PostReport\PostReportController;
 use App\Http\Controllers\ReportUser\ReportUserController;
 use App\Http\Controllers\Tenant\ShoppingbyVoucherController;
 use App\Http\Controllers\Tenant\TenantCategoryController;
@@ -190,6 +191,9 @@ Route::middleware(['auth:api'])->group(function () {
     Route::get('/user-reports', [ReportUserController::class, 'reportIndex']);
     Route::post('/user-reports', [ReportUserController::class, 'reportStore']);
     Route::get('/user-reports/{id}', [ReportUserController::class, 'reportShow']);
+
+    // Report Post
+    Route::post('/post/reports', [PostReportController::class, 'store']);
 
     // Block User
     Route::post('/block-user', [UserBlockerController::class, 'blockUser']);

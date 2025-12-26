@@ -87,6 +87,12 @@ class PostController extends Controller
         // Ambil optional filter tipe (image, video, document, link, text)
         $filterType = $request->query('type');
 
+        // Ambil daftar user yang diblokir oleh user ini
+        $blockedUserIds = UserBlocked::where('blocker_user_id', $loggedInUserId)
+            ->where('is_active', 1) // hanya yang aktif
+            ->pluck('blocked_user_id')
+            ->toArray();
+
         $posts = Post::with(['author:user_id,name,photo'])
             ->where('wall_owner_id', $userId)
             ->when($filterType, function ($query, $filterType) {
@@ -96,6 +102,7 @@ class PostController extends Controller
                     $query->where('type', $filterType);
                 }
             })
+            ->whereNotIn('author_id', $blockedUserIds)
             ->where(function ($query) use ($loggedInUserId, $userId, $isViewingOwnWall) {
                 $query
                     ->where('author_id', $loggedInUserId)

@@ -10,6 +10,7 @@ use App\Models\CommunityUser;
 use App\Models\DiscussionComment;
 use App\Models\DiscussionCommentLike;
 use App\Models\DiscussionLike;
+use App\Models\UserBlocked;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 use Illuminate\Support\Facades\DB;
@@ -104,9 +105,17 @@ class DiscussionController extends Controller
     {
         $user = JWTAuth::parseToken()->authenticate();
 
+        // Ambil daftar user yang diblokir oleh user ini
+        $blockedUserIds = UserBlocked::where('blocker_user_id', $user->user_id)
+            ->where('is_active', 1) // hanya yang aktif
+            ->pluck('blocked_user_id')
+            ->toArray();
+
         $discussions = Discussion::with(['user:user_id,name,photo'])
             ->withCount(['comments as comment_cnt'])
             ->where('community_id', $community_id)
+            // filter diskusi dari user yang diblokir
+            ->whereNotIn('user_id', $blockedUserIds)
             ->orderBy('created_dt', 'desc')
             ->get();
 
