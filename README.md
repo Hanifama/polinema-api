@@ -10,8 +10,6 @@
 
 Proyek ini dikembangkan dengan arsitektur API-centric sehingga dapat digunakan oleh berbagai client (Web, Mobile, atau sistem lain).
 
-![Preview Proyek](docs/images/splashscreen.jpeg)
-
 ---
 
 ## ✨ Fitur Utama Aplikasi
@@ -22,31 +20,36 @@ Aplikasi **HI Polinema** menyediakan berbagai fitur utama yang terintegrasi deng
 
 Pengguna dapat mengelola informasi profil pribadi seperti data diri, foto profil, serta pengaturan akun yang terhubung langsung dengan sistem backend.
 
-![Profile](docs/images/profile.jpeg)
-
 ### 🤝 Teman
 
 Fitur pertemanan memungkinkan pengguna untuk saling terhubung, menambah teman, melihat daftar teman, serta membangun relasi antar pengguna di dalam aplikasi.
-
-![Teman](docs/images/teman.jpeg)
 
 ### 🛒 Belanja
 
 Aplikasi menyediakan fitur belanja yang memungkinkan pengguna melihat produk, melakukan transaksi, serta memantau status pesanan yang dikelola melalui REST API.
 
-![Belanja](docs/images/belanja.jpeg)
-
 ### 🏪 Tenant
 
 Fitur tenant digunakan untuk menampilkan dan mengelola data tenant (penjual) yang ada di lingkungan Polinema, termasuk informasi produk dan aktivitas penjualan.
-
-![Tenant](docs/images/tenant.jpeg)
 
 ### 👥 Komunitas
 
 Pengguna dapat bergabung ke dalam komunitas, berinteraksi, serta mengikuti berbagai aktivitas atau informasi yang dibagikan dalam komunitas tersebut.
 
-![Komunitas](docs/images/komunitas.jpeg)
+---
+
+## 📱 Preview Aplikasi HI Polinema
+
+Berikut adalah cuplikan tampilan aplikasi HI Polinema yang menggunakan REST API ini sebagai backend service.
+
+<p align="center">
+  <img src="docs/images/splashscreen.jpeg" width="160" />
+  <img src="docs/images/profile.jpeg" width="160" />
+  <img src="docs/images/teman.jpeg" width="160" />
+  <img src="docs/images/belanja.jpeg" width="160" />
+  <img src="docs/images/tenant.jpeg" width="160" />
+  <img src="docs/images/komunitas.jpeg" width="160" />
+</p>
 
 ---
 
