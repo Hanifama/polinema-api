@@ -22,9 +22,7 @@
     "paths": {
         "/articles": {
             "get": {
-                "tags": [
-                    "Artikel"
-                ],
+                "tags": ["Artikel"],
                 "summary": "Mendapatkan semua artikel",
                 "description": "Mengambil daftar semua artikel yang tersedia.",
                 "operationId": "4b6b039cdbcfb40dc4fee43c03540b36",
@@ -48,9 +46,7 @@
         },
         "/articles/{article_id}": {
             "get": {
-                "tags": [
-                    "Artikel"
-                ],
+                "tags": ["Artikel"],
                 "summary": "Mendapatkan detail artikel berdasarkan ID",
                 "description": "Mengambil artikel berdasarkan article_id.",
                 "operationId": "0c09027e06f11f892e87bfb378e76641",
@@ -84,9 +80,7 @@
         },
         "/change/send-otp": {
             "post": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Kirim OTP untuk perubahan kata sandi",
                 "description": "Menghasilkan dan mengirim OTP 6 digit ke email pengguna untuk permintaan perubahan kata sandi. OTP berlaku selama 3 menit.",
                 "operationId": "81d849406aae3f814dea92e75b2a1367",
@@ -96,9 +90,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "email"
-                                ],
+                                "required": ["email"],
                                 "properties": {
                                     "email": {
                                         "description": "Alamat email pengguna.",
@@ -183,9 +175,7 @@
         },
         "/change/verify-otp": {
             "post": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Verifikasi OTP untuk perubahan kata sandi",
                 "description": "Memverifikasi OTP yang dikirim ke email pengguna untuk memastikan bahwa OTP valid dan belum kadaluarsa. Jika OTP berhasil diverifikasi, pengguna dapat melanjutkan untuk mengganti kata sandi.",
                 "operationId": "24b7bdc28264c293bd1cccf177604fc7",
@@ -195,9 +185,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "otp_code"
-                                ],
+                                "required": ["otp_code"],
                                 "properties": {
                                     "otp_code": {
                                         "description": "Kode OTP yang dikirim ke email pengguna.",
@@ -282,9 +270,7 @@
         },
         "/change/password": {
             "post": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Mengganti kata sandi pengguna",
                 "description": "Memungkinkan pengguna untuk mengganti kata sandi mereka setelah memverifikasi OTP dan memastikan kata sandi lama benar.",
                 "operationId": "3259c126d0276c342164ccd12ddc8c71",
@@ -393,9 +379,7 @@
         },
         "/auth/login": {
             "post": {
-                "tags": [
-                    "Auth"
-                ],
+                "tags": ["Auth"],
                 "summary": "Login pengguna",
                 "operationId": "076c5414f0f40b5b2235bc08750f825c",
                 "requestBody": {
@@ -403,10 +387,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "email",
-                                    "password"
-                                ],
+                                "required": ["email", "password"],
                                 "properties": {
                                     "email": {
                                         "description": "Email pengguna",
@@ -570,9 +551,7 @@
         },
         "/account/reset/send-otp": {
             "post": {
-                "tags": [
-                    "Lupa Password"
-                ],
+                "tags": ["Lupa Password"],
                 "summary": "Mengirimkan OTP untuk reset password",
                 "description": "Endpoint ini mengirimkan kode OTP ke email pengguna yang diminta untuk mereset password. Kode OTP ini berlaku selama 2 menit dan tidak memerlukan token bearer seperti pada umumnya.",
                 "operationId": "sendOtpPasswordReset",
@@ -581,9 +560,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "email"
-                                ],
+                                "required": ["email"],
                                 "properties": {
                                     "email": {
                                         "description": "Alamat email yang digunakan untuk mengirimkan OTP",
@@ -654,9 +631,7 @@
         },
         "/account/reset/verify": {
             "post": {
-                "tags": [
-                    "Lupa Password"
-                ],
+                "tags": ["Lupa Password"],
                 "summary": "Verifikasi OTP dan reset password",
                 "description": "Endpoint ini memverifikasi OTP yang dikirim ke email pengguna. Jika OTP valid dan belum kadaluarsa, password baru yang acak akan dibuat dan langsung dikirimkan ke email pengguna. Password baru tersebut bisa langsung digunakan untuk login.",
                 "operationId": "verifyOtpPasswordReset",
@@ -665,10 +640,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "email",
-                                    "otp_code"
-                                ],
+                                "required": ["email", "otp_code"],
                                 "properties": {
                                     "email": {
                                         "description": "Alamat email yang terdaftar dan digunakan untuk verifikasi OTP",
@@ -722,9 +694,7 @@
         },
         "/account/reset-password": {
             "post": {
-                "tags": [
-                    "Lupa Password"
-                ],
+                "tags": ["Lupa Password"],
                 "summary": "Atur password baru setelah OTP",
                 "operationId": "30456a916884b498a8fccc6f9a097eff",
                 "requestBody": {
@@ -773,9 +743,7 @@
         },
         "/auth/register/step1": {
             "post": {
-                "tags": [
-                    "Auth"
-                ],
+                "tags": ["Auth"],
                 "summary": "Registrasi Langkah 1",
                 "description": "Mendaftarkan akun baru menggunakan email, nama, password, dan provinsi.",
                 "operationId": "8e609502eeb06e133611ea354ed6b34a",
@@ -784,11 +752,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "email",
-                                    "password"
-                                ],
+                                "required": ["name", "email", "password"],
                                 "properties": {
                                     "name": {
                                         "type": "string",
@@ -881,9 +845,7 @@
         },
         "/auth/register/step2": {
             "post": {
-                "tags": [
-                    "Auth"
-                ],
+                "tags": ["Auth"],
                 "summary": "Registrasi Langkah 2",
                 "description": "Melengkapi data jurusan dan angkatan pengguna. setelah berhasil maka akan mengirimkan OTP ke email untuk proses aktifasi akun pengguna.",
                 "operationId": "686abe7257af9ef5f375038a29f846de",
@@ -986,9 +948,7 @@
         },
         "/auth/activate": {
             "post": {
-                "tags": [
-                    "Auth"
-                ],
+                "tags": ["Auth"],
                 "summary": "Aktivasi Akun",
                 "description": "Mengaktifkan akun pengguna menggunakan OTP yang dikirim melalui email.",
                 "operationId": "19db2fbd102cffabc1cd088b4821ed4d",
@@ -997,11 +957,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "user_id",
-                                    "email",
-                                    "otp_code"
-                                ],
+                                "required": ["user_id", "email", "otp_code"],
                                 "properties": {
                                     "user_id": {
                                         "type": "string",
@@ -1095,9 +1051,7 @@
         },
         "/auth/resend-otp": {
             "post": {
-                "tags": [
-                    "Auth"
-                ],
+                "tags": ["Auth"],
                 "summary": "Kirim Ulang OTP",
                 "description": "Mengirim ulang kode OTP ke email pengguna jika OTP sebelumnya sudah kadaluarsa.",
                 "operationId": "e293de7435c071b908f7258442c2842e",
@@ -1106,10 +1060,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "user_id",
-                                    "email"
-                                ],
+                                "required": ["user_id", "email"],
                                 "properties": {
                                     "user_id": {
                                         "type": "string",
@@ -1190,9 +1141,7 @@
         },
         "/banner/banner-tenant": {
             "get": {
-                "tags": [
-                    "Banner Tenant"
-                ],
+                "tags": ["Banner Tenant"],
                 "summary": "Ambil semua banner tenant voucher belanja",
                 "operationId": "f32837e2312a89274aab73308b1f5f56",
                 "responses": {
@@ -1212,9 +1161,7 @@
         },
         "/banner/spotlight": {
             "get": {
-                "tags": [
-                    "Banner-spotlight"
-                ],
+                "tags": ["Banner-spotlight"],
                 "summary": "Ambil semua banner spotlight",
                 "operationId": "17e7e9b7efcedfa22c290cef064a3f8d",
                 "responses": {
@@ -1282,9 +1229,7 @@
         },
         "/banner/spotlight/{banner_id}": {
             "get": {
-                "tags": [
-                    "Banner-spotlight"
-                ],
+                "tags": ["Banner-spotlight"],
                 "summary": "Ambil detail banner spotlight berdasarkan ID",
                 "operationId": "eaff5fb963627f5f2896a06f5d138ee7",
                 "parameters": [
@@ -1364,9 +1309,7 @@
         },
         "/block-user": {
             "post": {
-                "tags": [
-                    "User Block"
-                ],
+                "tags": ["User Block"],
                 "summary": "Blokir user",
                 "operationId": "d8cd68912b42057f287c44cb8226e345",
                 "requestBody": {
@@ -1374,9 +1317,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "blocked_user_id"
-                                ],
+                                "required": ["blocked_user_id"],
                                 "properties": {
                                     "blocked_user_id": {
                                         "type": "string",
@@ -1409,9 +1350,7 @@
         },
         "/unblock-user": {
             "post": {
-                "tags": [
-                    "User Block"
-                ],
+                "tags": ["User Block"],
                 "summary": "Unblock user",
                 "operationId": "f84ba255de8aa032e2ac76585c56e800",
                 "requestBody": {
@@ -1419,9 +1358,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "blocked_user_id"
-                                ],
+                                "required": ["blocked_user_id"],
                                 "properties": {
                                     "blocked_user_id": {
                                         "type": "string",
@@ -1450,9 +1387,7 @@
         },
         "/check-blocked/{userId}": {
             "get": {
-                "tags": [
-                    "User Block"
-                ],
+                "tags": ["User Block"],
                 "summary": "Cek apakah user diblokir",
                 "operationId": "7241949b78144f763d4c8de55b1888ce",
                 "parameters": [
@@ -1481,9 +1416,7 @@
         },
         "/blocked-users": {
             "get": {
-                "tags": [
-                    "User Block"
-                ],
+                "tags": ["User Block"],
                 "summary": "List user yang diblokir",
                 "operationId": "4964306b937911fe531759fad0dada43",
                 "responses": {
@@ -1500,9 +1433,7 @@
         },
         "/chat/room": {
             "post": {
-                "tags": [
-                    "Chating"
-                ],
+                "tags": ["Chating"],
                 "summary": "Buat atau ambil chat room antara pengguna yang login dan penerima",
                 "description": "Endpoint ini digunakan untuk membuat chat room baru atau mengambil room yang sudah ada antara dua pengguna. Diperlukan token otentikasi Bearer JWT.",
                 "operationId": "93ea9444ae8745a943f7100b9a8013aa",
@@ -1511,9 +1442,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "recipient_id"
-                                ],
+                                "required": ["recipient_id"],
                                 "properties": {
                                     "recipient_id": {
                                         "description": "User ID dari penerima yang ingin diajak chat",
@@ -1616,9 +1545,7 @@
         },
         "/chat/get-message/{chroom_id}": {
             "get": {
-                "tags": [
-                    "Chating"
-                ],
+                "tags": ["Chating"],
                 "summary": "Ambil semua pesan dari sebuah chat room",
                 "description": "Endpoint ini digunakan untuk mengambil semua pesan dalam sebuah chat room tertentu. Hanya bisa diakses oleh anggota room tersebut. Token Bearer diperlukan.",
                 "operationId": "bc1e951ad2702b868659ff7aa14bb997",
@@ -1657,9 +1584,7 @@
         },
         "/chat/send-message/{chroom_id}": {
             "post": {
-                "tags": [
-                    "Chating"
-                ],
+                "tags": ["Chating"],
                 "summary": "Kirim pesan ke dalam chat room",
                 "description": "Endpoint ini digunakan untuk mengirimkan pesan teks dan/atau file ke dalam sebuah chat room tertentu. Diperlukan token Bearer.",
                 "operationId": "be53dea666d60e829ab16af49d7b51bf",
@@ -1681,9 +1606,7 @@
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "message"
-                                ],
+                                "required": ["message"],
                                 "properties": {
                                     "message": {
                                         "description": "Isi pesan",
@@ -1723,9 +1646,7 @@
         },
         "/check-version": {
             "get": {
-                "tags": [
-                    "Version"
-                ],
+                "tags": ["Version"],
                 "summary": "Cek versi aplikasi",
                 "operationId": "30b1480ba8cd105594da423d37e03eb0",
                 "parameters": [
@@ -1832,9 +1753,7 @@
         },
         "/events": {
             "get": {
-                "tags": [
-                    "Acara"
-                ],
+                "tags": ["Acara"],
                 "summary": "Mendapatkan semua acara",
                 "description": "Mengambil daftar semua acara yang tersedia.",
                 "operationId": "9329ad840c0cf58ee8b59b577e72272c",
@@ -1858,9 +1777,7 @@
         },
         "/events/{event_id}": {
             "get": {
-                "tags": [
-                    "Acara"
-                ],
+                "tags": ["Acara"],
                 "summary": "Mendapatkan detail acara berdasarkan ID",
                 "description": "Mengambil acara berdasarkan event_id.",
                 "operationId": "dd2bc981c95715049ea21951369b9109",
@@ -1894,9 +1811,7 @@
         },
         "/community-categories": {
             "get": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Ambil daftar kategori komunitas",
                 "description": "Mengambil seluruh kategori komunitas yang tersedia.",
                 "operationId": "de6d07543d1228b30c841f15ea2b5ada",
@@ -1946,9 +1861,7 @@
         },
         "/community": {
             "post": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Buat komunitas baru",
                 "description": "Endpoint ini digunakan untuk membuat komunitas baru dan sekaligus menambahkan user sebagai Ketua Grup. Setiap user hanya diperbolehkan membuat satu komunitas sebagai Ketua Grup.",
                 "operationId": "1fb526ea55609d11808fa672fff710ef",
@@ -1957,10 +1870,7 @@
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "category_id"
-                                ],
+                                "required": ["name", "category_id"],
                                 "properties": {
                                     "name": {
                                         "type": "string",
@@ -2006,9 +1916,7 @@
         },
         "/community/{communityId}/members/{memberId}": {
             "delete": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Kick member dari komunitas",
                 "description": "Hanya Ketua Grup yang dapat mengeluarkan member dari komunitas.",
                 "operationId": "d11e1531b6d8a6ec5d299d438d300272",
@@ -2055,9 +1963,7 @@
         },
         "/communities": {
             "get": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Ambil daftar komunitas",
                 "description": "Mengambil seluruh komunitas beserta jumlah membernya. Jika parameter `category_id` disertakan, hanya komunitas dengan kategori tersebut yang akan ditampilkan. Wajib menggunakan token otentikasi.",
                 "operationId": "cb699c9efb86b3947f6a8baa12f98a47",
@@ -2089,9 +1995,7 @@
         },
         "/my-communities": {
             "get": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Ambil daftar komunitas yang diikuti oleh user",
                 "description": "Mengambil seluruh komunitas yang diikuti oleh user yang sedang login. Dapat difilter berdasarkan kategori dengan parameter category_id.",
                 "operationId": "0d7724ba2ad8e4cc1225dcdc290c3e0b",
@@ -2123,9 +2027,7 @@
         },
         "/communities/{community_id}": {
             "get": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Ambil detail komunitas berdasarkan ID Komunitas",
                 "description": "Menampilkan detail komunitas beserta anggota dan jumlah anggota. Wajib menggunakan token otentikasi.",
                 "operationId": "72856cb824ccaf307e94bb150753933d",
@@ -2160,9 +2062,7 @@
         },
         "/communities/join/{community_id}": {
             "post": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Bergabung ke komunitas berdasarkan ID",
                 "description": "Mendaftarkan pengguna ke dalam komunitas tertentu. Menggunakan token otentikasi untuk validasi pengguna.",
                 "operationId": "aa290baf4f698b5e0420a9fbc9e59a10",
@@ -2239,9 +2139,7 @@
         },
         "/communities/unjoin/{community_id}": {
             "delete": {
-                "tags": [
-                    "Forum Komunitas"
-                ],
+                "tags": ["Forum Komunitas"],
                 "summary": "Keluar dari komunitas berdasarkan ID",
                 "description": "Menghapus relasi antara pengguna dan komunitas, sehingga pengguna tidak lagi menjadi anggota komunitas.",
                 "operationId": "a9e210ffcc7fd822da6b3deb004abf53",
@@ -2318,9 +2216,7 @@
         },
         "/discussion/comments/{discus_id}": {
             "get": {
-                "tags": [
-                    "Komentar Diskusi Komunitas"
-                ],
+                "tags": ["Komentar Diskusi Komunitas"],
                 "summary": "Lihat Komentar Diskusi",
                 "description": "Menampilkan semua komentar dari sebuah diskusi berdasarkan ID diskusi.",
                 "operationId": "f896bb74bd74c0ec390f683dabb96fa8",
@@ -2366,9 +2262,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "Komentar Diskusi Komunitas"
-                ],
+                "tags": ["Komentar Diskusi Komunitas"],
                 "summary": "Tambah Komentar Diskusi",
                 "description": "Menambahkan komentar ke dalam diskusi berdasarkan ID diskusi. Bisa menyertakan lampiran (attachment).",
                 "operationId": "fbe0ea68f50be883dc0fc994a8f4195d",
@@ -2388,9 +2282,7 @@
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "content"
-                                ],
+                                "required": ["content"],
                                 "properties": {
                                     "content": {
                                         "description": "Isi komentar",
@@ -2465,9 +2357,7 @@
         },
         "/comment/like/{comment_id}": {
             "post": {
-                "tags": [
-                    "Komentar Diskusi Komunitas"
-                ],
+                "tags": ["Komentar Diskusi Komunitas"],
                 "summary": "Menyukai komentar diskusi",
                 "description": "Memberi like pada komentar diskusi tertentu oleh user yang sedang login.",
                 "operationId": "d2f20b8bc430edb1fb4fcacf853c9a42",
@@ -2502,9 +2392,7 @@
         },
         "/comment/unlike/{comment_id}": {
             "post": {
-                "tags": [
-                    "Komentar Diskusi Komunitas"
-                ],
+                "tags": ["Komentar Diskusi Komunitas"],
                 "summary": "Menghapus like dari komentar diskusi",
                 "description": "Menghapus like yang sebelumnya diberikan oleh user yang sedang login ke komentar tertentu.",
                 "operationId": "cbdebcca416d08c97d683a1537212e50",
@@ -2536,9 +2424,7 @@
         },
         "/discussions": {
             "get": {
-                "tags": [
-                    "Post Diskusi Komunitas"
-                ],
+                "tags": ["Post Diskusi Komunitas"],
                 "summary": "Lihat semua diskusi",
                 "description": "Mengambil daftar semua diskusi yang ada, diurutkan berdasarkan tanggal pembuatan terbaru.",
                 "operationId": "d87e76f4c774db46cc31f63a232e2862",
@@ -2575,9 +2461,7 @@
         },
         "/community/discussions/{community_id}": {
             "get": {
-                "tags": [
-                    "Post Diskusi Komunitas"
-                ],
+                "tags": ["Post Diskusi Komunitas"],
                 "summary": "Lihat detail diskusi berdasarkan ID",
                 "description": "Mengambil detail diskusi berdasarkan ID komunitas yang diberikan, diurutkan berdasarkan tanggal pembuatan terbaru.",
                 "operationId": "c0dc0459c1682cc34673c8212b8a35d8",
@@ -2612,9 +2496,7 @@
         },
         "/community/discussion/{community_id}": {
             "post": {
-                "tags": [
-                    "Post Diskusi Komunitas"
-                ],
+                "tags": ["Post Diskusi Komunitas"],
                 "summary": "Buat diskusi baru dalam komunitas",
                 "description": "Membuat diskusi baru dalam komunitas berdasarkan ID komunitas yang diberikan, dengan opsional untuk mengunggah lampiran.",
                 "operationId": "4e097aedffc1c19c2b9483c7392a6f23",
@@ -2635,10 +2517,7 @@
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "title",
-                                    "content"
-                                ],
+                                "required": ["title", "content"],
                                 "properties": {
                                     "title": {
                                         "description": "Judul diskusi yang akan dibuat",
@@ -2746,9 +2625,7 @@
         },
         "/discussions/{discus_id}": {
             "get": {
-                "tags": [
-                    "Post Diskusi Komunitas"
-                ],
+                "tags": ["Post Diskusi Komunitas"],
                 "summary": "Lihat detail diskusi",
                 "description": "Menampilkan detail diskusi berdasarkan ID diskusi.",
                 "operationId": "bbf98cbf3dc6a9c9f6e64a4e57eb33a4",
@@ -2794,9 +2671,7 @@
                 ]
             },
             "delete": {
-                "tags": [
-                    "Post Diskusi Komunitas"
-                ],
+                "tags": ["Post Diskusi Komunitas"],
                 "summary": "Hapus diskusi",
                 "description": "Menghapus diskusi berdasarkan ID diskusi.",
                 "operationId": "872a657a1381f3d8c351fc2d0f7bb865",
@@ -2844,9 +2719,7 @@
         },
         "/discussions/discus/role/{discus_id}": {
             "delete": {
-                "tags": [
-                    "Post Diskusi Komunitas"
-                ],
+                "tags": ["Post Diskusi Komunitas"],
                 "summary": "Hapus diskusi",
                 "description": "Menghapus diskusi hanya untuk role nya ketua grup berdasarkan ID diskusi.",
                 "operationId": "fed4e00998d8eb48ebad79f966c39a35",
@@ -2897,9 +2770,7 @@
         },
         "/like/discussion/{discus_id}": {
             "post": {
-                "tags": [
-                    "Menyukai Diskusi Komunitas"
-                ],
+                "tags": ["Menyukai Diskusi Komunitas"],
                 "summary": "Tambah Like pada Diskusi",
                 "description": "Menambahkan like ke diskusi tertentu oleh user yang sudah login.",
                 "operationId": "e05eaef3cb3cbb9ce5d0131bf43684c1",
@@ -2961,9 +2832,7 @@
                 ]
             },
             "delete": {
-                "tags": [
-                    "Menyukai Diskusi Komunitas"
-                ],
+                "tags": ["Menyukai Diskusi Komunitas"],
                 "summary": "Hapus Like dari Diskusi",
                 "description": "Menghapus like dari diskusi oleh user yang sudah login.",
                 "operationId": "13c0156364fb1d85d72da917325c5fb4",
@@ -3027,9 +2896,7 @@
         },
         "/master-data/locations": {
             "get": {
-                "tags": [
-                    "Master Data"
-                ],
+                "tags": ["Master Data"],
                 "summary": "Ambil daftar lokasi",
                 "description": "Mengambil daftar lokasi berdasarkan tipe dan pencarian nama. (baru tersedia untuk provinsi) lat dan lng pada provinsi menunjukan lokasi ibukota pada provinsi tersebut.",
                 "operationId": "f31dcb685e50064a21b89620c9771bfa",
@@ -3111,9 +2978,7 @@
         },
         "/master-data/programs": {
             "get": {
-                "tags": [
-                    "Master Data"
-                ],
+                "tags": ["Master Data"],
                 "summary": "Ambil daftar semua jurusan beserta departemennya",
                 "description": "Endpoint ini akan mengembalikan daftar seluruh jurusan program studi. Setiap program memiliki relasi ke satu departemen (department). Data department disertakan di dalam objek program.",
                 "operationId": "listProgram",
@@ -3126,9 +2991,7 @@
         },
         "/master-data/programs/{program_id}": {
             "get": {
-                "tags": [
-                    "Master Data"
-                ],
+                "tags": ["Master Data"],
                 "summary": "Ambil detail jurusan berdasarkan ID beserta departemennya",
                 "description": "Endpoint ini akan mengembalikan detail dari satu jurusan berdasarkan ID-nya. Objek program akan menyertakan data departemen (department) sebagai relasi.",
                 "operationId": "detailProgram",
@@ -3155,9 +3018,7 @@
         },
         "/system-master": {
             "get": {
-                "tags": [
-                    "System Master"
-                ],
+                "tags": ["System Master"],
                 "summary": "Ambil semua data System Master",
                 "description": "\n     *\n     * Endpoint ini digunakan untuk mengambil data dari tabel `system_master`.\n     * \n     * Bisa difilter berdasarkan:\n     * - `category` → contoh: `app_information`\n     * - `sub_category` → contoh: `about`, `terms`, `privacy`, `faqs`\n     * - `key` → contoh: `about_app`, `terms_conditions`, `privacy_policy`, `faqs`\n     * \n     * Contoh penggunaan filter untuk tampilan di frontend:\n     * - Tentang Aplikasi: `category=app_information&sub_category=about&key=about_app`\n     * - Syarat & Ketentuan: `category=app_information&sub_category=terms&key=terms_conditions`\n     * - Kebijakan Privasi: `category=app_information&sub_category=privacy&key=privacy_policy`\n     * - FAQs: `category=app_information&sub_category=faqs&key=faqs`\n     * \n     * Status akan ditampilkan sebagai `active` jika bernilai 1, dan `inactive` jika bernilai 0.",
                 "operationId": "439cde96f658afa7b397dcb8ef51d9fb",
@@ -3272,9 +3133,7 @@
         },
         "/system-master/{id}": {
             "get": {
-                "tags": [
-                    "System Master"
-                ],
+                "tags": ["System Master"],
                 "summary": "Ambil satu data System Master berdasarkan ID",
                 "description": "Mengambil satu entri dari tabel system_master",
                 "operationId": "e97e59ee2cf568ac67793a5ba9b10e60",
@@ -3349,9 +3208,7 @@
                 ]
             },
             "put": {
-                "tags": [
-                    "System Master"
-                ],
+                "tags": ["System Master"],
                 "summary": "Update value dari System Master",
                 "description": "Update value (isi konten) berdasarkan ID",
                 "operationId": "3ab99ad499997cfdc945f5a6f23237ff",
@@ -3370,9 +3227,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "value"
-                                ],
+                                "required": ["value"],
                                 "properties": {
                                     "value": {
                                         "type": "string",
@@ -3435,9 +3290,7 @@
         },
         "/post/reports": {
             "post": {
-                "tags": [
-                    "Post Report"
-                ],
+                "tags": ["Post Report"],
                 "summary": "Laporkan konten (Post Commnunity / Post Wall)",
                 "description": "\n     * Endpoint ini digunakan untuk melaporkan konten yang dianggap melanggar aturan\n     * seperti spam, ujaran kebencian, pornografi, atau konten tidak pantas lainnya.\n     *\n     * ### Cara Penggunaan:\n     * - Tentukan jenis konten yang ingin dilaporkan melalui **report_type**\n     * - Isi **salah satu** sesuai jenis kontennya:\n     *   - report_type = `discussion`  → untuk forum komunitas gunakan `reported_discus_id` diisi oleh discus_id yang mau di report\n     *   - report_type = `post_wall`   → untuk post di wall gunakan `reported_post_id` diisi oleh post_id yang mau di report\n     * - Pilih salah satu, dan salah satunya null\n     *\n     * ",
                 "operationId": "7a39c2a845bc6fe758444e8a008a8cfc",
@@ -3446,10 +3299,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "report_type",
-                                    "category_code"
-                                ],
+                                "required": ["report_type", "category_code"],
                                 "properties": {
                                     "report_type": {
                                         "description": "Jenis konten yang dilaporkan. Pilihan: discussion | post_wall",
@@ -3508,9 +3358,7 @@
         },
         "/report-categories": {
             "get": {
-                "tags": [
-                    "Report - Categories"
-                ],
+                "tags": ["Report - Categories"],
                 "summary": "Ambil semua kategori report",
                 "operationId": "374b82740b13508ff546e43f4db6b425",
                 "responses": {
@@ -3525,9 +3373,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "Report - Categories"
-                ],
+                "tags": ["Report - Categories"],
                 "summary": "Buat kategori report baru",
                 "operationId": "cf50ce843097b89e8441884c8dba9795",
                 "requestBody": {
@@ -3535,9 +3381,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "name"
-                                ],
+                                "required": ["name"],
                                 "properties": {
                                     "name": {
                                         "type": "string"
@@ -3566,9 +3410,7 @@
         },
         "/report-categories/{code}": {
             "get": {
-                "tags": [
-                    "Report - Categories"
-                ],
+                "tags": ["Report - Categories"],
                 "summary": "Detail kategori report",
                 "operationId": "098c13f74e7de078263b08c58e466eeb",
                 "parameters": [
@@ -3599,9 +3441,7 @@
         },
         "/user-reports": {
             "get": {
-                "tags": [
-                    "User Report"
-                ],
+                "tags": ["User Report"],
                 "summary": "Ambil semua report milik user",
                 "operationId": "79e8ff6844689031248abe001590d4a3",
                 "responses": {
@@ -3616,9 +3456,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "User Report"
-                ],
+                "tags": ["User Report"],
                 "summary": "Buat laporan user",
                 "operationId": "f5077f10d3447e155c0d290a0422c589",
                 "requestBody": {
@@ -3663,9 +3501,7 @@
         },
         "/user-reports/{id}": {
             "get": {
-                "tags": [
-                    "User Report"
-                ],
+                "tags": ["User Report"],
                 "summary": "Detail report user",
                 "operationId": "b42a31f1173d58188e3ae9d7f9bcbcd6",
                 "parameters": [
@@ -3696,9 +3532,7 @@
         },
         "/promo-categories": {
             "get": {
-                "tags": [
-                    "Promo"
-                ],
+                "tags": ["Promo"],
                 "summary": "Mengambil daftar kategori promo aktif",
                 "description": "Menampilkan daftar kategori voucher promo aktif yang dikelompokkan berdasarkan name voucher.",
                 "operationId": "listCategoryVouchers",
@@ -3719,9 +3553,7 @@
         },
         "/grouped-promos": {
             "get": {
-                "tags": [
-                    "Promo"
-                ],
+                "tags": ["Promo"],
                 "summary": "Daftar promosi beserta informasi tenant, dengan filter kategori promo voucher",
                 "operationId": "listVouchers",
                 "parameters": [
@@ -3766,9 +3598,7 @@
         },
         "/grouped-promos/{voucher_id}": {
             "get": {
-                "tags": [
-                    "Promo"
-                ],
+                "tags": ["Promo"],
                 "summary": "Detail promo berdasarkan voucher_id",
                 "operationId": "80545a8709f799ff9122e574c77461fd",
                 "parameters": [
@@ -3817,9 +3647,7 @@
         },
         "/tenant-categories": {
             "get": {
-                "tags": [
-                    "Tenant Category"
-                ],
+                "tags": ["Tenant Category"],
                 "summary": "Mengambil daftar kategori tenant yang aktif",
                 "description": "Mengambil semua kategori tenant yang aktif dari database.",
                 "operationId": "getTenantCategories",
@@ -3898,9 +3726,7 @@
         },
         "/tenants": {
             "get": {
-                "tags": [
-                    "Tenant"
-                ],
+                "tags": ["Tenant"],
                 "summary": "Mengambil daftar tenant yang aktif",
                 "description": "Mengambil daftar tenant yang aktif dengan filter opsional berdasarkan kategori, nama, kota, dan radius lokasi.",
                 "operationId": "getActiveTenants",
@@ -4087,9 +3913,7 @@
         },
         "/tenant/{tenant_id}": {
             "get": {
-                "tags": [
-                    "Tenant"
-                ],
+                "tags": ["Tenant"],
                 "summary": "Mengambil detail tenant berdasarkan ID",
                 "description": "Mengambil informasi lengkap tenant berdasarkan ID tenant yang diberikan.",
                 "operationId": "getTenantDetail",
@@ -4230,9 +4054,7 @@
         },
         "/friend/favorite": {
             "post": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Menambahkan teman ke dalam daftar favorit",
                 "description": "Menambahkan teman yang dipilih ke dalam daftar favorit pengguna yang terautentikasi. Jika teman sudah ada dalam daftar favorit, akan memberikan pesan error.",
                 "operationId": "fbb3d57e97efcbb0079386590624aaab",
@@ -4241,9 +4063,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "friend_user_id"
-                                ],
+                                "required": ["friend_user_id"],
                                 "properties": {
                                     "friend_user_id": {
                                         "description": "ID user teman yang akan ditambahkan ke favorit",
@@ -4273,9 +4093,7 @@
         },
         "/friend/favorite-remove": {
             "delete": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Hapus teman dari daftar favorit",
                 "description": "Menghapus teman dari daftar favorit pengguna yang sedang login.",
                 "operationId": "b0e16980fb1fc6e59ba12fddb12b9940",
@@ -4312,9 +4130,7 @@
         },
         "/friend/send-request": {
             "post": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Mengirimkan permintaan pertemanan",
                 "description": "Mengirimkan permintaan pertemanan antara dua pengguna. Pengguna yang mengirimkan permintaan adalah pengguna yang sedang login (user_id_1), sedangkan pengguna yang menerima permintaan adalah pengguna yang dituju (user_id_2).",
                 "operationId": "4f5db158c7b34cda68992524468271e1",
@@ -4323,9 +4139,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "user_id_2"
-                                ],
+                                "required": ["user_id_2"],
                                 "properties": {
                                     "user_id_2": {
                                         "description": "ID pengguna yang menerima permintaan pertemanan. Merupakan UUID unik dari pengguna yang dituju.",
@@ -4446,9 +4260,7 @@
         },
         "/friend/accept-request": {
             "post": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Menerima permintaan pertemanan",
                 "description": "Fungsi ini digunakan untuk menerima permintaan pertemanan yang dikirimkan oleh pengguna lain. Pengguna yang menerima permintaan adalah pengguna yang sedang login (user_id_2), dan pengguna yang mengirim permintaan adalah user_id_1. Permintaan pertemanan akan diubah statusnya menjadi 'accepted'.",
                 "operationId": "da9016cd8d671f2f6594f5e92cf020a2",
@@ -4457,9 +4269,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "user_id_1"
-                                ],
+                                "required": ["user_id_1"],
                                 "properties": {
                                     "user_id_1": {
                                         "description": "ID pengguna yang mengirimkan permintaan pertemanan. Merupakan UUID unik dari pengguna yang mengirimkan permintaan.",
@@ -4580,9 +4390,7 @@
         },
         "/friend/get-friends": {
             "get": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Mengambil daftar teman yang diterima",
                 "description": "Endpoint ini digunakan untuk mengambil daftar teman yang statusnya sudah diterima ('accepted') oleh pengguna yang sedang login. Pengguna yang sedang login akan dianggap sebagai 'user_id_2' dan teman-temannya dapat ditemukan baik sebagai 'user_id_1' atau 'user_id_2'.",
                 "operationId": "2a8ddf311fbcf5cf032eb2d1b86cf7bc",
@@ -4725,9 +4533,7 @@
         },
         "/friend/get-incoming-requests": {
             "get": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Mengambil daftar permintaan pertemanan yang masuk",
                 "description": "Endpoint ini digunakan untuk mengambil daftar permintaan pertemanan yang statusnya 'pending' yang diterima oleh pengguna yang sedang login. Permintaan ini berasal dari teman yang mengirimkan permintaan pertemanan dan menunggu konfirmasi dari pengguna yang sedang login.",
                 "operationId": "bf9603cbaa62c0cbc089584af3e8148e",
@@ -4865,9 +4671,7 @@
         },
         "/friend/get-outgoing-requests": {
             "get": {
-                "tags": [
-                    "Friends"
-                ],
+                "tags": ["Friends"],
                 "summary": "Mengambil daftar permintaan pertemanan yang keluar",
                 "description": "Endpoint ini digunakan untuk mengambil daftar permintaan pertemanan yang statusnya 'pending' yang telah dikirim oleh pengguna yang sedang login kepada pengguna lain. Permintaan ini menunjukkan bahwa pengguna yang sedang login telah mengirim permintaan pertemanan yang menunggu konfirmasi dari pengguna penerima.",
                 "operationId": "4ca0e6bf1ea717187b37ad50a4d9eb6b",
@@ -5005,9 +4809,7 @@
         },
         "/profile": {
             "get": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Mengambil profil pengguna",
                 "description": "Mengambil data profil pengguna yang terautentikasi token bearer.",
                 "operationId": "getUserProfile",
@@ -5039,9 +4841,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Memperbarui profil pengguna",
                 "description": "Memperbarui data profil pengguna yang terautentikasi. Foto profil dapat diunggah dan informasi lain dapat diperbarui.",
                 "operationId": "updateUserProfile",
@@ -5179,9 +4979,7 @@
         },
         "/profile-experience": {
             "put": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Tambah atau update pengalaman kerja user",
                 "description": "Gunakan endpoint ini untuk menambahkan atau mengupdate pengalaman kerja. \n     *                  Untuk **menambahkan data baru**, **jangan sertakan `experience_id`**. \n     *                  Untuk **mengupdate data**, **sertakan `experience_id`** berdasarkan data yang sudah ada pada profile pengguna",
                 "operationId": "c43b55700b8831c8547c72e0239eb3eb",
@@ -5297,9 +5095,7 @@
         },
         "/profile-experience/{experience_id}": {
             "delete": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Hapus pengalaman kerja berdasarkan ID",
                 "description": "Menghapus satu data pengalaman kerja berdasarkan ID yang dimiliki oleh user yang sedang login.",
                 "operationId": "deleteExperienceById",
@@ -5331,9 +5127,7 @@
         },
         "/profile/delete-account": {
             "delete": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Menghapus akun pengguna (hilang permanen)",
                 "description": "Soft delete akun pengguna yang sedang login.",
                 "operationId": "2239e71b9a242eaca9d0ef2ddab2d3f3",
@@ -5351,9 +5145,7 @@
         },
         "/profile/share-location": {
             "patch": {
-                "tags": [
-                    "Profile Pengguna"
-                ],
+                "tags": ["Profile Pengguna"],
                 "summary": "Toggle Bagikan Lokasi",
                 "description": "Mengubah status bagikan lokasi user (true/false). Harus login (JWT)",
                 "operationId": "c2ce7c458d44fbcbcacba0266c947756",
@@ -5362,9 +5154,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "is_share_location"
-                                ],
+                                "required": ["is_share_location"],
                                 "properties": {
                                     "is_share_location": {
                                         "description": "Status apakah lokasi dibagikan atau tidak",
@@ -5452,9 +5242,7 @@
         },
         "/users-recommendations": {
             "get": {
-                "tags": [
-                    "Temukan Teman"
-                ],
+                "tags": ["Temukan Teman"],
                 "summary": "Ambil rekomendasi teman berdasarkan jurusan",
                 "description": "Endpoint ini memberikan daftar rekomendasi teman kepada pengguna berdasarkan jurusan yang sama. Hanya menampilkan pengguna yang belum berteman dengan user saat ini. Menggunakan token Bearer yang valid.",
                 "operationId": "672b75719ef9535c823558eb358a7424",
@@ -5593,9 +5381,7 @@
         },
         "/users/favorites": {
             "get": {
-                "tags": [
-                    "Temukan Teman"
-                ],
+                "tags": ["Temukan Teman"],
                 "summary": "Mengambil daftar teman favorit",
                 "description": "Mengambil daftar teman favorit untuk pengguna yang terautentikasi, termasuk informasi dasar setiap teman seperti nama, foto, jurusan, dan lokasi.",
                 "operationId": "7a19ec13d40d8e4a104889397d6751a2",
@@ -5619,9 +5405,7 @@
         },
         "/users": {
             "get": {
-                "tags": [
-                    "Temukan Teman"
-                ],
+                "tags": ["Temukan Teman"],
                 "summary": "Ambil data pengguna di sekitar",
                 "description": "Menampilkan data pengguna yang sedang login (self) dan daftar pengguna aktif lainnya. Bisa difilter dengan parameter:\n     * - 'major' untuk filter jurusan (partial match, case-insensitive)\n     * - 'year_generation' untuk filter angkatan (partial match, case-insensitive)\n     * - 'search' untuk cari nama pengguna (partial match, case-insensitive)\n     * - 'radius' untuk membatasi pencarian berdasarkan jarak dari lokasi pengguna (dalam kilometer)",
                 "operationId": "27e9dca2a8167efbeb04930f2d750c3d",
@@ -5822,9 +5606,7 @@
         },
         "/users/{user_id}": {
             "get": {
-                "tags": [
-                    "Temukan Teman"
-                ],
+                "tags": ["Temukan Teman"],
                 "summary": "Lihat detail pengguna berdasarkan ID",
                 "description": "Endpoint ini digunakan untuk menampilkan detail dari seorang pengguna yang aktif berdasarkan user_id. Jika user_id bukan milik pengguna yang status akunnya aktif, maka akan dihitung jaraknya dari pengguna saat ini.",
                 "operationId": "6e574ee199d4249fcfd17adf82e9bbe8",
@@ -5963,9 +5745,7 @@
         },
         "/wall/{user_id}": {
             "get": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Ambil semua postingan dari wall pengguna",
                 "description": "Endpoint ini digunakan untuk mengambil semua postingan di wall milik pengguna tertentu, baik yang bersifat pribadi, publik, atau hanya untuk teman. Postingan dapat difilter berdasarkan tipe konten seperti media (gambar/video), tautan, dokumen, atau teks. Endpoint ini memerlukan token Bearer yang valid untuk otentikasi.",
                 "operationId": "0bc9d4629a9a8d50c99b45d8b2d84318",
@@ -5987,12 +5767,7 @@
                         "required": false,
                         "schema": {
                             "type": "string",
-                            "enum": [
-                                "media",
-                                "link",
-                                "document",
-                                "text"
-                            ],
+                            "enum": ["media", "link", "document", "text"],
                             "example": "media"
                         }
                     }
@@ -6086,9 +5861,7 @@
         },
         "/post/{post_id}": {
             "get": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Ambil detail postingan wall berdasarkan post_id",
                 "description": "Mengambil detail lengkap dari sebuah postingan wall termasuk informasi author, komentar, like, dan status like oleh user yang login.",
                 "operationId": "9c27abd5a2759a854aeecf22df774846",
@@ -6263,9 +6036,7 @@
                 ]
             },
             "delete": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Hapus sebuah post wall",
                 "description": "Endpoint ini digunakan untuk menghapus sebuah post yang dibuat oleh pengguna yang sedang login. Harus menggunakan token Bearer yang valid.",
                 "operationId": "92bed0a505485edea502db6c679a673b",
@@ -6364,9 +6135,7 @@
         },
         "/wall/create-post": {
             "post": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Buat post baru di wall",
                 "description": "Endpoint ini digunakan untuk membuat postingan baru di wall pengguna tertentu. Bisa mengandung file atau link sebagai attachment. Harus menggunakan token Bearer yang valid.",
                 "operationId": "a7dbea5dc714f052582f379ea94c224c",
@@ -6375,9 +6144,7 @@
                     "content": {
                         "multipart/form-data": {
                             "schema": {
-                                "required": [
-                                    "wall_owner_id"
-                                ],
+                                "required": ["wall_owner_id"],
                                 "properties": {
                                     "wall_owner_id": {
                                         "type": "string",
@@ -6497,9 +6264,7 @@
         },
         "/post/comment/{post_id}": {
             "get": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Ambil semua komentar berdasarkan ID post wall",
                 "description": "Mengambil semua komentar yang terkait dengan post tertentu, termasuk data user yang memberikan komentar.",
                 "operationId": "011e8184c256feb09699405cd4bc5de6",
@@ -6610,9 +6375,7 @@
                 ]
             },
             "post": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Buat komentar baru pada post wall tertentu",
                 "operationId": "5304baa7e77870d2ac128931beadc648",
                 "parameters": [
@@ -6631,9 +6394,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "content"
-                                ],
+                                "required": ["content"],
                                 "properties": {
                                     "content": {
                                         "description": "Isi komentar",
@@ -6763,9 +6524,7 @@
         },
         "/post/like/{post_id}": {
             "post": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Like sebuah post wall",
                 "description": "Memberikan like pada sebuah post oleh user yang terautentikasi. User hanya bisa like satu kali.",
                 "operationId": "0d86a934753dc472775ed08c9dab980e",
@@ -6870,9 +6629,7 @@
         },
         "/posts/{post_id}/likes": {
             "get": {
-                "tags": [
-                    "Wall Post"
-                ],
+                "tags": ["Wall Post"],
                 "summary": "Mendapatkan List Like dari sebuah Wall Post",
                 "description": "Menampilkan daftar pengguna yang menyukai postingan wall tertentu",
                 "operationId": "070ed6286684178b36261db9b1c13e24",
@@ -6994,13 +6751,7 @@
     "components": {
         "schemas": {
             "User": {
-                "required": [
-                    "user_id",
-                    "name",
-                    "email",
-                    "password",
-                    "role"
-                ],
+                "required": ["user_id", "name", "email", "password", "role"],
                 "properties": {
                     "user_id": {
                         "description": "ID Pengguna (unik untuk setiap pengguna)",
